@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 13:57:42 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 18:16:52 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/05/24 20:40:44 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	parser_atoi(char *str, t_stack *stack, int n)
 		number = number * 10 + (*str++ - '0');
 	if (*str || number * sign > INT_MAX || number * sign < INT_MIN)
 		return (0);
-	stack->a[n] = number;
+	stack->a[n] = number * sign ;
 	return (1);
 }
 
@@ -62,9 +62,9 @@ static int	are_duplicates(t_stack *stack)
 
 	i = 0;
 	j = 1;
-	while (i < stack->len)
+	while (i < stack->len_a)
 	{
-		while (j < stack->len)
+		while (j < stack->len_a)
 		{
 			if (stack->a[i] == stack->a[j])
 			{
@@ -84,20 +84,15 @@ void	make_stack(int nargs, t_stack *stack, char **args)
 	int	n;
 
 	n = ptrlen(args);
-	stack->len = n;
+	stack->len_a = n;
+	stack->len_b = 0;
 	stack->a = (int *)ft_calloc(sizeof(int), n);
-	if (stack == 0)
+	stack->b = (int *)ft_calloc(sizeof(int), n);
+	if (!stack->a || !stack->b)
 		put_error("Error\n");
 	while (n--)
-	{
 		if (!parser_atoi(args[n], stack, n))
-		{
-			if (nargs == 2)
-				split_free(args);
-			free(stack->a);
 			put_error("Error\n");
-		}
-	}
 	if (nargs == 2)
 		split_free(args);
 	if (are_duplicates(stack))
