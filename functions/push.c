@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:53:54 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 20:58:48 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:22:58 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	pa(t_stack *stack)
 	if (stack->len_b > 0)
 	{
 		i = stack->len_a - 1;
-		while (i > 0)
+		while (i >= 0)
 		{
-			stack->a[i] = stack->a[i - 1];
+			stack->a[i + 1] = stack->a[i];
 			i--;
 		}
 		stack->a[0] = stack->b[0];
@@ -43,9 +43,9 @@ void	pb(t_stack *stack)
 	if (stack->len_a > 0)
 	{
 		i = stack->len_b - 1;
-		while (i > 0)
+		while (i >= 0)
 		{
-			stack->b[i] = stack->b[i - 1];
+			stack->b[i + 1] = stack->b[i];
 			i--;
 		}
 		stack->b[0] = stack->a[0];

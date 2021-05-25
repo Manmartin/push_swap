@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:05:15 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 20:36:36 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:29:42 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	put_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
-	system("leaks push_swap");
 	exit(-1);
 }
