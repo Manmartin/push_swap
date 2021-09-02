@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 13:22:54 by manmarti          #+#    #+#             */
-/*   Updated: 2021/09/02 13:22:55 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/09/02 19:50:55 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ static int	parser_atoi(char *str, t_stack *stack, int n)
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '+' || *str == '-')
+	{
 		if (*str++ == '-')
 			sign = -1;
+		if (*str == 0)
+			put_error("Error\n");
+	}
 	while (*str >= 48 && *str <= 57)
 		number = number * 10 + (*str++ - '0');
 	if (*str || number * sign > INT_MAX || number * sign < INT_MIN)

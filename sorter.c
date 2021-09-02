@@ -6,7 +6,7 @@
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 13:26:27 by manmarti          #+#    #+#             */
-/*   Updated: 2021/09/02 16:14:23 by manmarti         ###   ########.fr       */
+/*   Updated: 2021/09/02 19:40:27 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,6 @@ void	sort_stack(t_stack *stack)
 		else if (stack->len_a > 5)
 			sort_big(stack);
 	}
+	free(stack->a);
+	free(stack->b);
 }

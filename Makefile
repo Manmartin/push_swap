@@ -8,6 +8,9 @@ SRCS =	push_swap.c \
 
 OBJS = $(SRCS:.c=.o)
 
+CFLAGS = -Wall -Wextra -Werror
+CC = gcc
+
 .PHONY: clean fclean re
 
 all: $(NAME)
@@ -16,14 +19,14 @@ libft/libft.a:
 	$(MAKE) -C ./libft
 
 $(NAME): libft/libft.a $(OBJS)
-	gcc -Wall -Wextra -Werror $(SRCS) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) clean -C ./libft
+	$(MAKE) fclean -C ./libft
 
 fclean: clean
-	rm -f $(NAME) libft/libft.a
+	rm -f $(NAME)
 
 re: fclean all
 
