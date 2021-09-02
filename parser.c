@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 13:57:42 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 20:40:44 by manmarti         ###   ########.fr       */
+/*   Created: 2021/09/02 13:22:54 by manmarti          #+#    #+#             */
+/*   Updated: 2021/09/02 13:22:55 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ static int	are_duplicates(t_stack *stack)
 		while (j < stack->len_a)
 		{
 			if (stack->a[i] == stack->a[j])
-			{
-				free(stack->a);
 				return (1);
-			}
 			j++;
 		}
 		i++;

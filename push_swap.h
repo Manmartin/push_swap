@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 12:43:23 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 20:58:55 by manmarti         ###   ########.fr       */
+/*   Created: 2021/09/02 13:23:19 by manmarti          #+#    #+#             */
+/*   Updated: 2021/09/02 15:46:48 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 
@@ -21,7 +22,7 @@
 
 typedef struct s_stack {
 	int	len_a;
-	int len_b;
+	int	len_b;
 	int	*a;
 	int	*b;
 }	t_stack;
@@ -29,6 +30,8 @@ typedef struct s_stack {
 void	make_stack(int nargs, t_stack *stack, char **args);
 
 void	put_error(char *msg);
+void	sort_three(t_stack *s);
+void	sort_b(t_stack *s);
 
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
@@ -44,5 +47,7 @@ void	rr(t_stack *stack);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 void	rrr(t_stack *stack);
+
+void	sort_stack(t_stack *stack);
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmarti <manmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 19:33:25 by manmarti          #+#    #+#             */
-/*   Updated: 2021/05/24 20:12:19 by manmarti         ###   ########.fr       */
+/*   Created: 2021/08/10 18:22:08 by manmarti          #+#    #+#             */
+/*   Updated: 2021/08/10 18:23:08 by manmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ra(t_stack *stack)
 		i++;
 	}
 	stack->a[i] = aux;
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack *stack)
@@ -40,6 +41,7 @@ void	rb(t_stack *stack)
 		i++;
 	}
 	stack->b[i] = aux;
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *stack)
