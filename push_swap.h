@@ -32,6 +32,8 @@ void	make_stack(int nargs, t_stack *stack, char **args);
 void	put_error(char *msg);
 void	sort_three(t_stack *s);
 void	sort_b(t_stack *s);
+int		is_sorted(t_stack *stack);
+int		get_last_bit(int number);
 
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);

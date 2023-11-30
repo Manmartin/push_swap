@@ -12,27 +12,15 @@
 
 #include "push_swap.h"
 
-static int	is_sorted(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->len_a - 1)
-	{
-		if (stack->a[i] > stack->a[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	map_stack(t_stack *stack)
+static void	map_stack(t_stack *stack)
 {
 	int	*new_stack;
 	int	i;
 	int	j;
 
 	new_stack = (int *)malloc(sizeof(int) * stack->len_a);
+	if (new_stack == NULL)
+		put_error("Error\n");
 	i = 0;
 	j = 0;
 	while (i < stack->len_a)
@@ -48,7 +36,7 @@ void	map_stack(t_stack *stack)
 	stack->a = new_stack;
 }
 
-void	sort_short(t_stack *stack)
+static void	sort_short(t_stack *stack)
 {
 	int	i;
 	int	len;	
@@ -74,24 +62,42 @@ void	sort_short(t_stack *stack)
 	}
 }
 
-void	sort_big(t_stack *stack)
+static void	optimize_b(t_stack *stack, int next_shift, int last_bit)
+{
+	int	j;
+
+	j = stack->len_b;
+	while (j-- && next_shift <= last_bit && !is_sorted(stack))
+	{
+		if (stack->b[0] & (1 << (next_shift)))
+			pa(stack);
+		else
+			rb(stack);
+	}
+}
+
+static void	sort_big(t_stack *stack)
 {
 	int	shift;
+	int	last_bit;
 	int	i;
 
 	shift = 0;
-	while (!is_sorted(stack))
+	last_bit = get_last_bit(stack->len_a - 1);
+	while (shift <= last_bit)
 	{
 		i = stack->len_a;
-		while (i--)
+		while (i-- && !is_sorted(stack))
 		{
 			if (stack->a[0] & (1 << shift))
 				ra(stack);
 			else
 				pb(stack);
 		}
-		while (stack->len_b > 0)
-			pa(stack);
+		optimize_b(stack, shift + 1, last_bit);
+		if (is_sorted(stack))
+			while (stack->len_b)
+				pa(stack);
 		shift++;
 	}
 }

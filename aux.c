@@ -50,3 +50,30 @@ void	sort_b(t_stack *s)
 	else if (s->len_b == 1)
 		pa(s);
 }
+
+int	is_sorted(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->len_a - 1)
+	{
+		if (stack->a[i] > stack->a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	get_last_bit(int number)
+{
+	int	bit;
+
+	bit = 32;
+	while (--bit > 0)
+	{
+		if (number & (1 << bit))
+			return (bit);
+	}
+	return (bit);
+}
